@@ -92,8 +92,8 @@ endif
 
 "{{ UI: Color, theme etc.
 " A list of colorscheme plugin you may want to try. Find what suits you.
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'srcery-colors/srcery-vim'
+" Plug 'lifepillar/vim-gruvbox8'
+" Plug 'srcery-colors/srcery-vim'
 " Plug 'sjl/badwolf'
 " Plug 'ajmwagar/vim-deus'
 " Plug 'sainnhe/vim-color-desert-night'
@@ -103,6 +103,9 @@ Plug 'srcery-colors/srcery-vim'
 " Plug 'whatyouhide/vim-gotham'
 " Plug 'rakr/vim-one'
 " Plug 'kaicataldo/material.vim'
+Plug 'vim-scripts/L9'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'seebi/dircolors-solarized',{'do': 'mkdir -p ~/.dir_colors && cp dircolors.256dark $HOME/.dir_colors/'}
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme

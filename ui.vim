@@ -12,23 +12,29 @@ set background=dark
 "}}
 
 "{{ Colorscheme settings
+
 """"""""""""""""""""""""""""gruvbox settings"""""""""""""""""""""""""""
 " We should check if theme exists before using it, otherwise you will get
 " error message when starting Nvim
-if utils#HasColorscheme('gruvbox8')
-  " Italic options should be put before colorscheme setting,
-  " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
-  let g:gruvbox_italics=1
-  let g:gruvbox_italicize_strings=1
-  let g:gruvbox_filetype_hi_groups = 0
-  let g:gruvbox_plugin_hi_groups = 0
-  colorscheme gruvbox8_hard
-else
-  colorscheme desert
-endif
+" if utils#HasColorscheme('gruvbox8')
+"   " Italic options should be put before colorscheme setting,
+"   " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
+"   let g:gruvbox_italics=1
+"   let g:gruvbox_italicize_strings=1
+"   let g:gruvbox_filetype_hi_groups = 0
+"   let g:gruvbox_plugin_hi_groups = 0
+"   colorscheme gruvbox8_hard
+" else
+"   colorscheme desert
+" endif
 
 """"""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""
 " colorscheme deus
+
+""""""""""""""""""""""""""" solarized8 settings"""""""""""""""""""""""""
+set termguicolors
+set background=dark
+colorscheme solarized
 
 """"""""""""""""""""""""""" solarized8 settings"""""""""""""""""""""""""
 " Solarized colorscheme without bullshit

@@ -75,4 +75,5 @@ endfor
 " - https://sanctum.geek.nz/arabesque/vim-anti-patterns/
 " - https://github.com/gkapfham/dotfiles/blob/master/.vimrc
 " - https://google.github.io/styleguide/vimscriptguide.xml
-"}
+"
+

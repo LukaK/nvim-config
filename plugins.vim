@@ -155,10 +155,10 @@ Plug 'vim-scripts/tComment'
 " Plug 'mg979/vim-visual-multi'
 
 " Title character case
-Plug 'christoomey/vim-titlecase'
+" Plug 'christoomey/vim-titlecase'
 
 " Autosave files on certain events
-Plug '907th/vim-auto-save'
+" Plug '907th/vim-auto-save'
 
 " graphcial undo history, see https://github.com/mbbill/undotree
 Plug 'mbbill/undotree'
@@ -364,20 +364,22 @@ call deoplete#custom#option('auto_complete', v:true)
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-"""""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
-" Trigger configuration. Do not use <tab> if you use YouCompleteMe
-let g:UltiSnipsExpandTrigger='<c-j>'
-
+""""""""""""""""""""""""" UltiSnips settings """""""""""""""""""
 " Do not look for SnipMate snippets
 let g:UltiSnipsEnableSnipMate = 0
 
-" Shortcut to jump forward and backward in tabstop positions
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsEditSplit = 'vertical'
 
 " Configuration for custom snippets directory, see
 " https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'my_snippets']
+
+" Shortcut to jump forward and backward in tabstop positions
+let g:UltiSnipsJumpForwardTrigger = '<leader>a'
+let g:UltiSnipsJumpBackwardTrigger = '<leader>b'
+
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe
+let g:UltiSnipsExpandTrigger = '<leader>e'
 "}}
 
 
@@ -549,27 +551,27 @@ augroup END
 
 "{{ File editting
 """"""""""""""""""""""""""""vim-titlecase settings"""""""""""""""""""""""
-" Do not use the default mapping provided
-let g:titlecase_map_keys = 0
-
-nmap <leader>gt <Plug>Titlecase
-vmap <leader>gt <Plug>Titlecase
-nmap <leader>gT <Plug>TitlecaseLine
+" " Do not use the default mapping provided
+" let g:titlecase_map_keys = 0
+"
+" nmap <leader>gt <Plug>Titlecase
+" vmap <leader>gt <Plug>Titlecase
+" nmap <leader>gT <Plug>TitlecaseLine
 
 """"""""""""""""""""""""" t-comment """""""""""""""""""
 vnoremap <leader>c :TCommentMaybeInline<CR>
 nnoremap <leader>c :TComment<CR>
 
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
-" Enable autosave on nvim startup
-let g:auto_save = 1
-
-" A list of events to trigger autosave
-let g:auto_save_events = ['InsertLeave', 'TextChanged']
-" let g:auto_save_events = ['InsertLeave']
-
-" Show autosave status on command line
-let g:auto_save_silent = 0
+" " Enable autosave on nvim startup
+" let g:auto_save = 1
+"
+" " A list of events to trigger autosave
+" let g:auto_save_events = ['InsertLeave', 'TextChanged']
+" " let g:auto_save_events = ['InsertLeave']
+"
+" " Show autosave status on command line
+" let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
 if g:is_win || g:is_mac

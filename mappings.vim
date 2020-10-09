@@ -86,13 +86,6 @@ xnoremap H ^
 nnoremap L g_
 xnoremap L g_
 
-" Fast window switching, inspiration from
-" https://stackoverflow.com/a/4373470/6064933
-nnoremap <M-left> <C-w>h
-nnoremap <M-right> <C-w>l
-nnoremap <M-down> <C-w>j
-nnoremap <M-up> <C-w>k
-
 " Continuous visual shifting (does not exit Visual mode), `gv` means
 " to reselect previous visual area, see https://superuser.com/q/310417/736190
 xnoremap < <gv
@@ -118,8 +111,8 @@ nnoremap <leader>v `[V`]
 vnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
 " Find and replace (like Sublime Text 3)
-nnoremap <C-H> :%s/
-xnoremap <C-H> :s/
+nnoremap <C-S> :%s/
+xnoremap <C-S> :s/
 
 " Change current working directory locally and print cwd after that,
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file

@@ -135,6 +135,9 @@ if executable('ctags')
   " show file tags in vim window
   Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
 endif
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'christoomey/vim-tmux-navigator'
 "}}
 
 "{{ File editting plugin
@@ -304,6 +307,7 @@ endif
 call plug#end()
 "}}
 "}
+
 
 "{ Plugin settings
 "{{ Vim-plug settings
@@ -518,6 +522,28 @@ let g:tagbar_type_markdown = {
   \ },
   \ 'sort': 0,
   \ }
+
+
+""""""""""""""""""""""""""" nerd tree """"""""""""""""""""""""""""""""""
+" Show file path from the home directory in the status line
+let NERDTreeStatusline="%{exists('b:NERDTree')?fnamemodify(b:NERDTree.root.path.str(), ':~'):''}"
+
+" ignore files
+let NERDTreeIgnore=['\.swp$', '\.pyc$', '^__pycache__$']
+let NERDTreeShowLineNumbers=1
+let NERDTreeWinPos="left"
+let NERDTreeShowFiles=1
+let NERDTreeChDirMode=2
+let NERDTreeWinSize=45
+
+augroup nerdtree_auto_open_close
+  autocmd!
+  " Let quit work as expected if after entering :q the only window left open is NERD Tree itself
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  " Open nerd tree and move cursor to the file position
+  autocmd VimEnter * NERDTree | wincmd p
+augroup END
 "}}
 
 "{{ File editting

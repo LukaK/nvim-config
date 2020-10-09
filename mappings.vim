@@ -9,13 +9,13 @@ xnoremap ; :
 nnoremap q; q:
 
 " Quicker <Esc> in insert mode
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 " Turn the word under cursor to upper case
-inoremap <c-u> <Esc>viwUea
+" inoremap <c-u> <Esc>viwUea
 
 " Turn the current word into title case
-inoremap <c-t> <Esc>b~lea
+" inoremap <c-t> <Esc>b~lea
 
 " Paste non-linewise text above or below current cursor,
 " see https://stackoverflow.com/a/1346777/6064933
@@ -23,11 +23,10 @@ nnoremap <leader>p m`o<ESC>p``
 nnoremap <leader>P m`O<ESC>p``
 
 " Shortcut for faster save and quit
-nnoremap <silent> <leader>w :update<CR>
+nnoremap <C-S> :wa<CR>
 " Saves the file if modified and quit
-nnoremap <silent> <leader>q :x<CR>
-" Quit all opened buffers
-nnoremap <silent> <leader>Q :qa<CR>
+nnoremap <C-Q> :q<CR>
+
 
 " Navigation in the location and quickfix list
 nnoremap <silent> [l :lprevious<CR>zv
@@ -97,7 +96,7 @@ xnoremap > >gv
 " https://unix.stackexchange.com/q/162528/221410
 inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " Use <esc> to close auto-completion menu
-inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
+" inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
@@ -111,8 +110,8 @@ nnoremap <leader>v `[V`]
 vnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
 " Find and replace (like Sublime Text 3)
-nnoremap <C-S> :%s/
-xnoremap <C-S> :s/
+nnoremap <leader>ss :%s/
+xnoremap <leader>ss :%s/
 
 " Change current working directory locally and print cwd after that,
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file

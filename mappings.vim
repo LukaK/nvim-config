@@ -24,8 +24,9 @@ nnoremap <leader>P m`O<ESC>p``
 
 " Shortcut for faster save and quit
 nnoremap <C-S> :wa<CR>
-" Saves the file if modified and quit
 nnoremap <C-Q> :q<CR>
+inoremap <C-S> <ESC>:w<CR>
+inoremap <C-Q> <ESC>:q<CR>
 
 
 " Navigation in the location and quickfix list

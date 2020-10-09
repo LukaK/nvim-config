@@ -149,7 +149,7 @@ Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 
 " Comment plugin
-Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/tComment'
 
 " Multiple cursor plugin like Sublime Text?
 " Plug 'mg979/vim-visual-multi'
@@ -380,6 +380,7 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 "}}
 
+
 "{{ Python-related
 """"""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
 " Whether to show doc string
@@ -554,6 +555,10 @@ let g:titlecase_map_keys = 0
 nmap <leader>gt <Plug>Titlecase
 vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
+
+""""""""""""""""""""""""" t-comment """""""""""""""""""
+vnoremap <leader>c :TCommentMaybeInline<CR>
+nnoremap <leader>c :TComment<CR>
 
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
 " Enable autosave on nvim startup

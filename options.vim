@@ -65,7 +65,7 @@ set wildignorecase  " ignore file and dir name cases in cmd-completion
 set cursorline  " Show current line where the cursor is
 
 " Minimum lines to keep above and below cursor when scrolling
-set scrolloff=3
+" set scrolloff=3
 
 " Use mouse to select and resize windows, etc.
 set mouse=nic  " Enable mouse in several mode

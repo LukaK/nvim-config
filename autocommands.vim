@@ -64,4 +64,11 @@ augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300}
 augroup END
+
+" Center lines
+augroup VCenterCursor
+  autocmd!
+  autocmd BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=(winheight(win_getid())/2 + 1)
+augroup END
 "}

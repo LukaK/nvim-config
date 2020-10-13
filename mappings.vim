@@ -41,7 +41,7 @@ nnoremap <silent> ]Q :clast<CR>zv
 
 " Close location list or quickfix list if they are present,
 " see https://superuser.com/q/355325/736190
-nnoremap<silent> \x :windo lclose <bar> cclose<CR>
+nnoremap <silent> \x :windo lclose <bar> cclose<CR>
 
 " Close a buffer and switching to another buffer, do not close the
 " window, see https://stackoverflow.com/q/4465095/6064933

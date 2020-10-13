@@ -113,6 +113,9 @@ if !exists('g:started_by_firenvim')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'mhinz/vim-startify'
 endif
+
+" Yank highlighter
+Plug 'machakann/vim-highlightedyank'
 "}}
 
 "{{ Plugin to deal with URL

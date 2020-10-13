@@ -140,7 +140,6 @@ if executable('ctags')
 endif
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'christoomey/vim-tmux-navigator'
 "}}
 
 "{{ File editting plugin
@@ -276,6 +275,9 @@ if (g:is_linux || g:is_mac) && executable('tmux')
 
   " .tmux.conf syntax highlighting and setting check
   Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+
+  " tmux navigation
+  Plug 'christoomey/vim-tmux-navigator'
 endif
 "}}
 

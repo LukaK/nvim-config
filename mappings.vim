@@ -67,7 +67,7 @@ nnoremap <Space><Space> a<Space><ESC>h
 " consistent with the behavior of D, C)
 nnoremap Y y$
 
-" Move the cursor based on physical lines, not the actual lines.
+" move the cursor based on physical lines, not the actual lines.
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap ^ g^
@@ -127,7 +127,7 @@ nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
 inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
 
 " Decrease indent level in insert mode with shift+tab
-inoremap <S-Tab> <ESC><<i
+" inoremap <S-Tab> <ESC><<i
 
 " Change text without putting it into the vim register,
 " see https://stackoverflow.com/q/54255/6064933

@@ -114,8 +114,6 @@ if !exists('g:started_by_firenvim')
   Plug 'mhinz/vim-startify'
 endif
 
-" Yank highlighter
-Plug 'machakann/vim-highlightedyank'
 "}}
 
 "{{ Plugin to deal with URL

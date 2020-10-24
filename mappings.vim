@@ -28,6 +28,9 @@ nnoremap <C-Q> :q<CR>
 inoremap <C-S> <ESC>:w<CR>
 inoremap <C-Q> <ESC>:q<CR>
 
+" Navigation between ctags
+nnoremap <leader>g g<C-]>
+nnoremap <leader>b <C-o>
 
 " Navigation in the location and quickfix list
 nnoremap <silent> [l :lprevious<CR>zv
@@ -123,8 +126,8 @@ tnoremap <ESC>   <C-\><C-n>
 
 " Toggle spell checking (autosave does not play well with z=, so we disable it
 " when we are doing spell checking)
-nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
-inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
+" nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
+" inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
 
 " Decrease indent level in insert mode with shift+tab
 " inoremap <S-Tab> <ESC><<i

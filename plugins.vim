@@ -29,18 +29,32 @@ let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 
 "{{ Autocompletion related plugins
 call plug#begin(g:PLUGIN_HOME)
+
+" TODO: Organize ncm plugins by sections
 " Auto-completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-github'
+Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
+Plug 'filipekiss/ncm2-look.vim'
+Plug 'yuki-ycino/ncm2-dictionary'
+Plug 'fgrsnau/ncm2-aspell'
+Plug 'fgrsnau/ncm2-otherbuf'
 
-if executable('clang') && (g:is_mac || g:is_linux)
-  Plug 'deoplete-plugins/deoplete-clang'
-endif
-
-" Python source for deoplete
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-
-" Vim source for deoplete
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"
+" if executable('clang') && (g:is_mac || g:is_linux)
+"   Plug 'deoplete-plugins/deoplete-clang'
+" endif
+"
+" " Python source for deoplete
+" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'ncm2/ncm2-jedi'
+"
+" " Vim source for deoplete
+" Plug 'Shougo/neco-vim', { 'for': 'vim' }
 "}}
 
 "{{ Python-related plugins
@@ -144,6 +158,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Snippet engine and snippet template
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ncm2/ncm2-ultisnips'
 
 " Automatic insertion and deletion of a pair of characters
 Plug 'jiangmiao/auto-pairs'
@@ -230,7 +245,7 @@ endif
 
 " emoji
 " Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
-Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
+" Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 
 if g:is_mac
   Plug 'rhysd/vim-grammarous'
@@ -326,42 +341,51 @@ call utils#Cabbrev('pc', 'PlugClean')
 "}}
 
 "{{ Auto-completion related
+"""""""""""""""""""""""""""" ncm2 settings""""""""""""""""""""""""""
+set completeopt=noinsert,menuone,noselect,preview
+set shortmess+=c
+let g:ncm2#matcher='substrfuzzy'
+
+augroup ncm2_enable
+  autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
+
 """""""""""""""""""""""""""" deoplete settings""""""""""""""""""""""""""
-" Wheter to enable deoplete automatically after start nvim
-let g:deoplete#enable_at_startup = 1
-
-" Maximum candidate window width
-call deoplete#custom#source('_', 'max_menu_width', 80)
-
-" Minimum character length needed to activate auto-completion.
-call deoplete#custom#source('_', 'min_pattern_length', 1)
-
-" Whether to disable completion for certain syntax
+" " Wheter to enable deoplete automatically after start nvim
+" let g:deoplete#enable_at_startup = 1
+"
+" " Maximum candidate window width
+" call deoplete#custom#source('_', 'max_menu_width', 80)
+"
+" " Minimum character length needed to activate auto-completion.
+" call deoplete#custom#source('_', 'min_pattern_length', 1)
+"
+" " Whether to disable completion for certain syntax
+" " call deoplete#custom#source('_', {
+" "     \ 'filetype': ['vim'],
+" "     \ 'disabled_syntaxes': ['String']
+" "     \ })
 " call deoplete#custom#source('_', {
-"     \ 'filetype': ['vim'],
-"     \ 'disabled_syntaxes': ['String']
-"     \ })
-call deoplete#custom#source('_', {
-  \ 'filetype': ['python'],
-  \ 'disabled_syntaxes': ['Comment']
-  \ })
-
-" Ignore certain sources, because they only cause nosie most of the time
-call deoplete#custom#option('ignore_sources', {
-   \ '_': ['around', 'buffer', 'tag']
-   \ })
-
-" Candidate list item number limit
-call deoplete#custom#option('max_list', 30)
-
-" The number of processes used for the deoplete parallel feature.
-call deoplete#custom#option('num_processes', 16)
-
-" The delay for completion after input, measured in milliseconds.
-call deoplete#custom#option('auto_complete_delay', 100)
-
-" Enable deoplete auto-completion
-call deoplete#custom#option('auto_complete', v:true)
+"   \ 'filetype': ['python'],
+"   \ 'disabled_syntaxes': ['Comment']
+"   \ })
+"
+" " Ignore certain sources, because they only cause nosie most of the time
+" call deoplete#custom#option('ignore_sources', {
+"    \ '_': ['around', 'buffer', 'tag']
+"    \ })
+"
+" " Candidate list item number limit
+" call deoplete#custom#option('max_list', 30)
+"
+" " The number of processes used for the deoplete parallel feature.
+" call deoplete#custom#option('num_processes', 16)
+"
+" " The delay for completion after input, measured in milliseconds.
+" call deoplete#custom#option('auto_complete_delay', 100)
+"
+" " Enable deoplete auto-completion
+" call deoplete#custom#option('auto_complete', v:true)
 
 " Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -388,14 +412,14 @@ let g:UltiSnipsExpandTrigger = '<leader>e'
 
 "{{ Python-related
 """"""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
-" Whether to show doc string
-let g:deoplete#sources#jedi#show_docstring = 0
-
-" For large package, set autocomplete wait time longer
-let g:deoplete#sources#jedi#server_timeout = 50
-
-" Ignore jedi errors during completion
-let g:deoplete#sources#jedi#ignore_errors = 1
+" " Whether to show doc string
+" let g:deoplete#sources#jedi#show_docstring = 0
+"
+" " For large package, set autocomplete wait time longer
+" let g:deoplete#sources#jedi#server_timeout = 50
+"
+" " Ignore jedi errors during completion
+" let g:deoplete#sources#jedi#ignore_errors = 1
 
 """"""""""""""""""""""""jedi-vim settings"""""""""""""""""""
 " Disable autocompletion, because I use deoplete for auto-completion
@@ -709,7 +733,7 @@ if g:is_mac
 endif
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
-call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
+" call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 "}}
 
 "{{ LaTeX editting
@@ -718,10 +742,10 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   " Set up LaTeX flavor
   let g:tex_flavor = 'latex'
 
-  " Deoplete configurations for autocompletion to work
-  call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'tex': g:vimtex#re#deoplete
-        \})
+  " " Deoplete configurations for autocompletion to work
+  " call deoplete#custom#var('omni', 'input_patterns', {
+  "       \ 'tex': g:vimtex#re#deoplete
+  "       \})
 
   let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',

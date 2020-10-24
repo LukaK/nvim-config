@@ -58,8 +58,9 @@ Plug 'ncm2/ncm2-jedi'
 "}}
 
 "{{ Python-related plugins
+" TODO: See if jedi-vim can be used
 " Python completion, goto definition etc.
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting and more
 if g:is_mac || g:is_win
@@ -422,11 +423,11 @@ let g:UltiSnipsExpandTrigger = '<leader>e'
 " let g:deoplete#sources#jedi#ignore_errors = 1
 
 """"""""""""""""""""""""jedi-vim settings"""""""""""""""""""
-" Disable autocompletion, because I use deoplete for auto-completion
-let g:jedi#completions_enabled = 0
-
-" Whether to show function call signature
-let g:jedi#show_call_signatures = '0'
+" " Disable autocompletion, because I use deoplete for auto-completion
+" let g:jedi#completions_enabled = 0
+"
+" " Whether to show function call signature
+" let g:jedi#show_call_signatures = '0'
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor
@@ -742,10 +743,10 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   " Set up LaTeX flavor
   let g:tex_flavor = 'latex'
 
-  " " Deoplete configurations for autocompletion to work
-  " call deoplete#custom#var('omni', 'input_patterns', {
-  "       \ 'tex': g:vimtex#re#deoplete
-  "       \})
+  " Deoplete configurations for autocompletion to work
+  call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
 
   let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',

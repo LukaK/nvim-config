@@ -122,6 +122,9 @@ Plug 'vim-scripts/L9'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'seebi/dircolors-solarized',{'do': 'mkdir -p ~/.dir_colors && cp dircolors.256dark $HOME/.dir_colors/'}
 
+" yank highlighter
+Plug 'machakann/vim-highlightedyank'
+
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
   Plug 'vim-airline/vim-airline'

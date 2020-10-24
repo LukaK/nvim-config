@@ -156,11 +156,11 @@ if executable('rg')
 endif
 
 " Highlight groups for cursor color
-augroup cursor_color
-  autocmd!
-  autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
-  autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
-augroup END
+" augroup cursor_color
+"   autocmd!
+"   autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
+"   autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
+" augroup END
 
 " Set up cursor color and shape in various mode, ref:
 " https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal

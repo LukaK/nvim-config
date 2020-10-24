@@ -52,7 +52,10 @@ nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
 
 " Insert a blank line below or above current line (do not move the cursor),
 " see https://stackoverflow.com/a/16136133/6064933
-nnoremap <expr> oo printf('m`%so<ESC>``', v:count1)
+" TODO: When you find a way to not use nerdtree for work, change to old
+" nnoremap <expr> oo printf('m`%so<ESC>``', v:count1)
+" nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
+nnoremap <expr> Oo printf('m`%so<ESC>``', v:count1)
 nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
 
 " nnoremap oo @='m`o<c-v><Esc>``'<cr>

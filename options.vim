@@ -125,6 +125,7 @@ set pumheight=10  " Maximum number of items to show in popup menu
 " Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
 
+set spell " activate spell checking
 set spelllang=en,cjk  " Spell languages
 set spellsuggest+=10  " The number of suggestions shown in the screen for z=
 
@@ -155,11 +156,11 @@ if executable('rg')
 endif
 
 " Highlight groups for cursor color
-augroup cursor_color
-  autocmd!
-  autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
-  autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
-augroup END
+" augroup cursor_color
+"   autocmd!
+"   autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
+"   autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
+" augroup END
 
 " Set up cursor color and shape in various mode, ref:
 " https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal

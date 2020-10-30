@@ -28,6 +28,9 @@ nnoremap <C-Q> :q<CR>
 inoremap <C-S> <ESC>:w<CR>
 inoremap <C-Q> <ESC>:q<CR>
 
+" Navigation between ctags
+nnoremap <leader>g g<C-]>
+nnoremap <leader>b <C-o>
 
 " Navigation in the location and quickfix list
 nnoremap <silent> [l :lprevious<CR>zv
@@ -49,7 +52,10 @@ nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
 
 " Insert a blank line below or above current line (do not move the cursor),
 " see https://stackoverflow.com/a/16136133/6064933
-nnoremap <expr> oo printf('m`%so<ESC>``', v:count1)
+" TODO: When you find a way to not use nerdtree for work, change to old
+" nnoremap <expr> oo printf('m`%so<ESC>``', v:count1)
+" nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
+nnoremap <expr> Oo printf('m`%so<ESC>``', v:count1)
 nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
 
 " nnoremap oo @='m`o<c-v><Esc>``'<cr>
@@ -123,8 +129,8 @@ tnoremap <ESC>   <C-\><C-n>
 
 " Toggle spell checking (autosave does not play well with z=, so we disable it
 " when we are doing spell checking)
-nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
-inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
+" nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
+" inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
 
 " Decrease indent level in insert mode with shift+tab
 " inoremap <S-Tab> <ESC><<i

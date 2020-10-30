@@ -29,23 +29,38 @@ let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 
 "{{ Autocompletion related plugins
 call plug#begin(g:PLUGIN_HOME)
+
+" TODO: Organize ncm plugins by sections
 " Auto-completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-github'
+Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
+Plug 'filipekiss/ncm2-look.vim'
+Plug 'yuki-ycino/ncm2-dictionary'
+Plug 'fgrsnau/ncm2-aspell'
+Plug 'fgrsnau/ncm2-otherbuf'
 
-if executable('clang') && (g:is_mac || g:is_linux)
-  Plug 'deoplete-plugins/deoplete-clang'
-endif
-
-" Python source for deoplete
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-
-" Vim source for deoplete
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"
+" if executable('clang') && (g:is_mac || g:is_linux)
+"   Plug 'deoplete-plugins/deoplete-clang'
+" endif
+"
+" " Python source for deoplete
+" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'ncm2/ncm2-jedi'
+"
+" " Vim source for deoplete
+" Plug 'Shougo/neco-vim', { 'for': 'vim' }
 "}}
 
 "{{ Python-related plugins
+" TODO: See if jedi-vim can be used
 " Python completion, goto definition etc.
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting and more
 if g:is_mac || g:is_win
@@ -107,6 +122,9 @@ Plug 'vim-scripts/L9'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'seebi/dircolors-solarized',{'do': 'mkdir -p ~/.dir_colors && cp dircolors.256dark $HOME/.dir_colors/'}
 
+" yank highlighter
+Plug 'machakann/vim-highlightedyank'
+
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
   Plug 'vim-airline/vim-airline'
@@ -144,6 +162,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Snippet engine and snippet template
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ncm2/ncm2-ultisnips'
 
 " Automatic insertion and deletion of a pair of characters
 Plug 'jiangmiao/auto-pairs'
@@ -230,7 +249,7 @@ endif
 
 " emoji
 " Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
-Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
+" Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 
 if g:is_mac
   Plug 'rhysd/vim-grammarous'
@@ -326,42 +345,51 @@ call utils#Cabbrev('pc', 'PlugClean')
 "}}
 
 "{{ Auto-completion related
+"""""""""""""""""""""""""""" ncm2 settings""""""""""""""""""""""""""
+set completeopt=noinsert,menuone,noselect,preview
+set shortmess+=c
+let g:ncm2#matcher='substrfuzzy'
+
+augroup ncm2_enable
+  autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
+
 """""""""""""""""""""""""""" deoplete settings""""""""""""""""""""""""""
-" Wheter to enable deoplete automatically after start nvim
-let g:deoplete#enable_at_startup = 1
-
-" Maximum candidate window width
-call deoplete#custom#source('_', 'max_menu_width', 80)
-
-" Minimum character length needed to activate auto-completion.
-call deoplete#custom#source('_', 'min_pattern_length', 1)
-
-" Whether to disable completion for certain syntax
+" " Wheter to enable deoplete automatically after start nvim
+" let g:deoplete#enable_at_startup = 1
+"
+" " Maximum candidate window width
+" call deoplete#custom#source('_', 'max_menu_width', 80)
+"
+" " Minimum character length needed to activate auto-completion.
+" call deoplete#custom#source('_', 'min_pattern_length', 1)
+"
+" " Whether to disable completion for certain syntax
+" " call deoplete#custom#source('_', {
+" "     \ 'filetype': ['vim'],
+" "     \ 'disabled_syntaxes': ['String']
+" "     \ })
 " call deoplete#custom#source('_', {
-"     \ 'filetype': ['vim'],
-"     \ 'disabled_syntaxes': ['String']
-"     \ })
-call deoplete#custom#source('_', {
-  \ 'filetype': ['python'],
-  \ 'disabled_syntaxes': ['Comment']
-  \ })
-
-" Ignore certain sources, because they only cause nosie most of the time
-call deoplete#custom#option('ignore_sources', {
-   \ '_': ['around', 'buffer', 'tag']
-   \ })
-
-" Candidate list item number limit
-call deoplete#custom#option('max_list', 30)
-
-" The number of processes used for the deoplete parallel feature.
-call deoplete#custom#option('num_processes', 16)
-
-" The delay for completion after input, measured in milliseconds.
-call deoplete#custom#option('auto_complete_delay', 100)
-
-" Enable deoplete auto-completion
-call deoplete#custom#option('auto_complete', v:true)
+"   \ 'filetype': ['python'],
+"   \ 'disabled_syntaxes': ['Comment']
+"   \ })
+"
+" " Ignore certain sources, because they only cause nosie most of the time
+" call deoplete#custom#option('ignore_sources', {
+"    \ '_': ['around', 'buffer', 'tag']
+"    \ })
+"
+" " Candidate list item number limit
+" call deoplete#custom#option('max_list', 30)
+"
+" " The number of processes used for the deoplete parallel feature.
+" call deoplete#custom#option('num_processes', 16)
+"
+" " The delay for completion after input, measured in milliseconds.
+" call deoplete#custom#option('auto_complete_delay', 100)
+"
+" " Enable deoplete auto-completion
+" call deoplete#custom#option('auto_complete', v:true)
 
 " Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -388,21 +416,21 @@ let g:UltiSnipsExpandTrigger = '<leader>e'
 
 "{{ Python-related
 """"""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
-" Whether to show doc string
-let g:deoplete#sources#jedi#show_docstring = 0
-
-" For large package, set autocomplete wait time longer
-let g:deoplete#sources#jedi#server_timeout = 50
-
-" Ignore jedi errors during completion
-let g:deoplete#sources#jedi#ignore_errors = 1
+" " Whether to show doc string
+" let g:deoplete#sources#jedi#show_docstring = 0
+"
+" " For large package, set autocomplete wait time longer
+" let g:deoplete#sources#jedi#server_timeout = 50
+"
+" " Ignore jedi errors during completion
+" let g:deoplete#sources#jedi#ignore_errors = 1
 
 """"""""""""""""""""""""jedi-vim settings"""""""""""""""""""
-" Disable autocompletion, because I use deoplete for auto-completion
-let g:jedi#completions_enabled = 0
-
-" Whether to show function call signature
-let g:jedi#show_call_signatures = '0'
+" " Disable autocompletion, because I use deoplete for auto-completion
+" let g:jedi#completions_enabled = 0
+"
+" " Whether to show function call signature
+" let g:jedi#show_call_signatures = '0'
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor
@@ -709,7 +737,7 @@ if g:is_mac
 endif
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
-call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
+" call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 "}}
 
 "{{ LaTeX editting

@@ -437,6 +437,7 @@ let g:UltiSnipsExpandTrigger = '<leader>e'
 
 " Python docstring (vim-pydocstring)
 let g:pydocstring_formatter = 'google'
+let g:pydocstring_enable_mapping = 0
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor

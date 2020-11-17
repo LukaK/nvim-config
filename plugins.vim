@@ -72,6 +72,9 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 
 " Python-related text object
 Plug 'jeetsukumaran/vim-pythonsense'
+
+" Python docstring generation
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 "}}
 
 "{{ Search related plugins
@@ -431,6 +434,9 @@ let g:UltiSnipsExpandTrigger = '<leader>e'
 "
 " " Whether to show function call signature
 " let g:jedi#show_call_signatures = '0'
+
+" Python docstring (vim-pydocstring)
+let g:pydocstring_formatter = 'google'
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor

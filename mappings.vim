@@ -155,6 +155,10 @@ endif
 " Copy entire buffer.
 nnoremap <silent> <leader>y :%y<CR>
 
+" buffer navigation
+nnoremap <silent> gb :<C-U>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
+nnoremap <silent> gB :<C-U>call buf_utils#GoToBuffer(v:count, 'backward')<CR>
+
 " Toggle cursor column
 " nnoremap <silent> <leader>cl :call utils#ToggleCursorCol()<CR>
 

@@ -130,7 +130,7 @@ endif
 " Plug 'kaicataldo/material.vim'
 Plug 'vim-scripts/L9'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'seebi/dircolors-solarized',{'do': 'mkdir -p ~/.dir_colors && cp dircolors.256dark $HOME/.dir_colors/'}
+Plug 'seebi/dircolors-solarized',{'do': 'mkdir -p ~/.config/dircolors && cp dircolors.256dark $HOME/.config/dircolors/'}
 
 " yank highlighter
 Plug 'machakann/vim-highlightedyank'
@@ -590,8 +590,11 @@ augroup nerdtree_auto_open_close
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
   " Open nerd tree and move cursor to the file position
-  autocmd VimEnter * NERDTree | wincmd p
+  " autocmd VimEnter * NERDTree | wincmd p
 augroup END
+
+vnoremap <leader>F :NERDTreeToggle<CR>
+nnoremap <leader>F :NERDTreeToggle<CR>
 "}}
 
 "{{ File editting

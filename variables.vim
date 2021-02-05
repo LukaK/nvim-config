@@ -27,6 +27,11 @@ else
   echoerr 'Python 3 executable not found! You must install Python 3 and set its PATH correctly!'
 endif
 
+" TODO: Add aditional check if the neovim2 virtualenv is setup
+if executable('python2') && executable('pyenv')
+  let g:python_host_prog=$PYENV_ROOT.'/versions/neovim2/bin/python'
+endif
+
 " Custom mapping <leader> (see `:h mapleader` for more info)
 let mapleader = ','
 "}}

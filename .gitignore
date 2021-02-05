@@ -8,3 +8,5 @@ rplugin.vim
 shada/*
 site/*
 undo/*
+
+autoload/plug.vim

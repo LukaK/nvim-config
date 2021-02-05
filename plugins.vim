@@ -23,6 +23,13 @@ if (g:is_win || g:is_mac) && !filereadable(g:vim_plug_fpath)
   augroup END
 endif
 
+" Autoinstall
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 " The directory to install plugins.
 let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 "}}

@@ -71,4 +71,11 @@ augroup VCenterCursor
   autocmd BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=(winheight(win_getid())/2 + 1)
 augroup END
+
+
+" Center lines
+augroup YamlSpacing
+  autocmd!
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
 "}

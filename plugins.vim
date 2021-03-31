@@ -312,6 +312,11 @@ endif
 Plug 'mattn/emmet-vim'
 "}}
 
+
+"{{ Indentation
+Plug 'Yggdroot/indentLine'
+"}}
+
 "{{ Misc plugins
 " Modern matchit implementation
 Plug 'andymass/vim-matchup'
